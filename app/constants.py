@@ -1,0 +1,2 @@
+DYNAMO_DB_TABLE_NAME = "city_weather_log"
+CACHE_TTL_MINUTES = 5
