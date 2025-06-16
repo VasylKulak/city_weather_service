@@ -13,10 +13,6 @@ def make_log_key(city: str, timestamp: int) -> str:
     return f"{city}_{timestamp}.json"
 
 
-def normalize_city_name(city: str) -> str:
-    return city.strip().lower().replace(" ", "")
-
-
 def parse_weather_data(data: dict) -> CityWeatherResponse:
     return CityWeatherResponse(
         city=data["name"],

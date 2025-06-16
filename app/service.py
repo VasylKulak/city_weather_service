@@ -5,7 +5,7 @@ from app.clients.weather_api import WeatherClient
 from app.constants import CACHE_TTL_MINUTES
 from app.repository import BaseCityWeatherLogRepository
 from app.schemas import CityWeatherLog, CityWeatherResponse
-from app.utils import current_unix_ts, make_log_key, normalize_city_name
+from app.utils import current_unix_ts, make_log_key
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,6 @@ class CityWeatherService:
         - If cache exists, load JSON from S3 and return it
         - Otherwise, call external API, store and log the fresh data
         """
-        city = normalize_city_name(city)
 
         cached_log = await self.city_weather_log_repo.get_recent_log(
             city, max_age_minutes=CACHE_TTL_MINUTES
